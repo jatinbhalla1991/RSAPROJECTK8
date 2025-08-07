@@ -44,17 +44,19 @@ jobs:
 
       - name: Terraform Init with backend config
         run: |
-          terraform init \
-            -backend-config="resource_group_name=storageaccount" \
-            -backend-config="storage_account_name=terraformstatejbgroup1" \
-            -backend-config="container_name=tfstate" \
-            -backend-config="key=dev.terraform.tfstate"
+          terraform init 
+          #\
+            #-backend-config="resource_group_name=storageaccount" \
+            #-backend-config="storage_account_name=terraformstatejbgroup1" \
+            #-backend-config="container_name=tfstate" \
+            #-backend-config="key=dev.terraform.tfstate"
 
       - name: Terraform Plan
         run: terraform plan -var-file="dev.tfvars"
 
-      # - name: Terraform Apply
-      #   run: terraform apply -var-file="dev.tfvars" -auto-approve
+      - name: Terraform Apply
+        run: terraform apply -var-file="dev.tfvars" -auto-approve
       
-      - name: Terraform Destroy
-        run: terraform destroy -var-file="dev.tfvars" -auto-approve
+      #- name: Terraform Destroy
+      #  run: terraform destroy -var-file="dev.tfvars" -auto-approve
+      
